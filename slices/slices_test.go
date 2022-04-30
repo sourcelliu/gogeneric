@@ -37,6 +37,13 @@ func TestSliceToMap(t *testing.T) {
 	aIntMap := SliceToMap(aSlice, aIntFunc)
 	assert.Equal(t, len(aIntMap), 3)
 	assert.Equal(t, aIntMap[2].name, "sourcelliu:2")
+
+	var aNilSlice []*A
+	var aNilFunc func(origin *A) int
+	aNilMap := SliceToMap(aNilSlice, aNilFunc)
+	assert.Nil(t, aNilMap)
+	aNilMap = SliceToMap(aSlice, aNilFunc)
+	assert.Nil(t, aNilMap)
 }
 
 type A struct {
